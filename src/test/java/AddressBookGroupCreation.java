@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+import dataObjects.newGroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -44,7 +45,7 @@ public class AddressBookGroupCreation {
     public void еestCreateGroup() {
         openGroupPage(By.linkText("groups"));
         selectCreateNewGroup();
-        fillInRequiredNewGroupFields("any valid group name", "test description 1", "test description second 2");
+        fillInRequiredNewGroupFields(new newGroupData("any valid group name", "test description 1", "test description second 2"));
         clickSubmitBtn();
     }
 
@@ -52,13 +53,13 @@ public class AddressBookGroupCreation {
         driver.findElement(By.name("submit")).click();
     }
 
-    private void fillInRequiredNewGroupFields(String groupName, String groupDescription1, String groupDescription2) {
+    private void fillInRequiredNewGroupFields(newGroupData newGroupData) {
         driver.findElement(By.name("group_name")).click();
-        driver.findElement(By.name("group_name")).sendKeys(groupName);
+        driver.findElement(By.name("group_name")).sendKeys(newGroupData.getGroupName());
         driver.findElement(By.name("group_header")).click();
-        driver.findElement(By.name("group_header")).sendKeys(groupDescription1);
+        driver.findElement(By.name("group_header")).sendKeys(newGroupData.getGroupDescription1());
         driver.findElement(By.name("group_footer")).click();
-        driver.findElement(By.name("group_footer")).sendKeys(groupDescription2);
+        driver.findElement(By.name("group_footer")).sendKeys(newGroupData.getGroupDescription2());
     }
 
     private void selectCreateNewGroup() {
