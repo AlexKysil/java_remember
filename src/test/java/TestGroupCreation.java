@@ -13,7 +13,6 @@ import java.util.*;
 
 public class TestGroupCreation {
   private WebDriver driver;
-  private Map<String, Object> vars;
   String expected_url = "http://localhost:8080/addressbook/";
 
   @BeforeClass
@@ -25,7 +24,6 @@ public class TestGroupCreation {
   public void setUp() {
       driver = new ChromeDriver();
       driver.get(expected_url);
-      vars = new HashMap<String, Object>();
   }
   @AfterTest
   public void teardown() {
