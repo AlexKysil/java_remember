@@ -1,4 +1,7 @@
+package UItests;
+
 import dataObjects.newContactData;
+import dataObjects.newGroupData;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -7,11 +10,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
-public class createNewContact {
-    private WebDriver driver;
+public class BaseTest {
     String expected_url = "http://localhost:8080/addressbook/";
+    private WebDriver driver;
 
     @BeforeClass
     public static void setupClass() {
@@ -40,14 +42,28 @@ public class createNewContact {
         }
     }
 
-    @Test
-    public void testCreateNewContact() {
-        openCreateNewContact();
-        fillInNewContactFields(new newContactData("FirstName", "LastName", "NickName", "+380009999561", "any_valid_test_email@yopmail.com"));
-        clickSubmitBtn();
+    protected void clickSubmitBtn() {
+        driver.findElement(By.name("submit")).click();
     }
 
-    private void fillInNewContactFields(newContactData newContactData) {
+    protected void fillInRequiredNewGroupFields(newGroupData newGroupData) {
+        driver.findElement(By.name("group_name")).click();
+        driver.findElement(By.name("group_name")).sendKeys(newGroupData.getGroupName());
+        driver.findElement(By.name("group_header")).click();
+        driver.findElement(By.name("group_header")).sendKeys(newGroupData.getGroupDescription1());
+        driver.findElement(By.name("group_footer")).click();
+        driver.findElement(By.name("group_footer")).sendKeys(newGroupData.getGroupDescription2());
+    }
+
+    protected void selectCreateNewGroup() {
+        driver.findElement(By.name("new")).click();
+    }
+
+    protected void openGroupPage() {
+        driver.findElement(By.linkText("groups")).click();
+    }
+
+    public void fillInNewContactFields(newContactData newContactData) {
         driver.findElement(By.name("firstname")).sendKeys(newContactData.getFirstName());
         driver.findElement(By.name("lastname")).sendKeys(newContactData.getLastName());
         driver.findElement(By.name("nickname")).sendKeys(newContactData.getNickName());
@@ -55,11 +71,19 @@ public class createNewContact {
         driver.findElement(By.name("email")).sendKeys(newContactData.getEmail());
     }
 
-    private void openCreateNewContact() {
+    public void openCreateNewContact() {
         driver.findElement(By.xpath("//a[text()='add new']")).click();
     }
 
-    private void clickSubmitBtn() {
-        driver.findElement(By.name("submit")).click();
+    protected void return2GroupPage() {
+      driver.findElement(By.linkText("group page")).click();
+    }
+
+    protected void clickDeleteGroupBtn() {
+      driver.findElement(By.name("delete")).click();
+    }
+
+    protected void selectFirstGroupInList() {
+      driver.findElement(By.name("selected[]")).click();
     }
 }
