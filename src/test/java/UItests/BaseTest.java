@@ -1,5 +1,6 @@
 package UItests;
 
+import UItests.appmanager.ApplicationManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;

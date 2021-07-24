@@ -9,9 +9,9 @@ public class GroupCreate extends BaseTest {
 
     @Test
     public void testCreateGroup() {
-        appmngr.openGroupPage();
-        appmngr.selectCreateNewGroup();
-        appmngr.fillInRequiredNewGroupFields(new newGroupData("any valid group name", "test description 1", "test description second 2"));
+        appmngr.navHelp.openGroupPage();
+        appmngr.groupHelp.selectCreateNewGroup();
+        appmngr.groupHelp.fillInRequiredNewGroupFields(new newGroupData("any valid group name", "test description 1", "test description second 2"));
         appmngr.clickSubmitBtn();
     }
 

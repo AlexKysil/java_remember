@@ -8,9 +8,9 @@ public class GroupDelete extends BaseTest {
 
   @Test
   public void testGroupDeletion() {
-    appmngr.openGroupPage();
-    appmngr.selectFirstGroupInList();
-    appmngr.clickDeleteGroupBtn();
-    appmngr.return2GroupPage();
+    appmngr.navHelp.openGroupPage();
+    appmngr.groupHelp.selectFirstGroupInList();
+    appmngr.groupHelp.clickDeleteGroupBtn();
+    appmngr.groupHelp.return2GroupPage();
   }
 }
