@@ -3,18 +3,30 @@ package UItests.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.BrowserType;
 
 public class ApplicationManager {
     public ContactHelper contactHelp;
     public NavigationHelper navHelp;
     public WebDriver driver;
     public SessionHelper sessionHelp;
-
+    public String browser;
     String expected_url = "http://localhost:8080/addressbook/";
     public GroupHelper groupHelp;
 
+    public ApplicationManager(String browser) {
+        this.browser = browser;
+    }
+
     public void init() {
-        driver = new ChromeDriver();
+        if (browser == BrowserType.CHROME) {
+            driver = new ChromeDriver();
+        } else if (browser == BrowserType.FIREFOX) {
+            driver = new FirefoxDriver();
+        } else  {
+            driver = new ChromeDriver();
+        }
         groupHelp = new GroupHelper(driver);
         navHelp = new NavigationHelper(driver);
         contactHelp = new ContactHelper(driver);
