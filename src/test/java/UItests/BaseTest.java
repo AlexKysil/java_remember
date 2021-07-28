@@ -2,17 +2,23 @@ package UItests;
 
 import UItests.appmanager.ApplicationManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
 
-    public final ApplicationManager appmngr = new ApplicationManager();
+    public final ApplicationManager appmngr = new ApplicationManager(BrowserType.CHROME);
 
     @BeforeClass
-    public static void setupClass() {
-        WebDriverManager.chromedriver().setup();
+    public void setupClass() {
+        if (appmngr.browser.equals(BrowserType.CHROME)) {
+            WebDriverManager.chromedriver().setup();
+        } else if (appmngr.browser.equals(BrowserType.FIREFOX)) {
+            WebDriverManager.firefoxdriver().setup();
+        }
+
     }
 
     @BeforeTest
