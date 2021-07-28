@@ -8,7 +8,7 @@ public class ContactUpdate extends BaseTest {
     @Test
     public void testContactDeletion() {
         appmngr.contactHelp.clickContactEdit();
-        appmngr.getContactHelp().fillInNewContactFields(new newContactData("UpdatedFirstName", "UpdatedLastName", "UpdatedNickName", "+380009999562", "updated_any_valid_test_email@yopmail.com"));
+        appmngr.getContactHelp().fillInNewContactFields(new newContactData("UpdatedFirstName", "UpdatedLastName", "UpdatedNickName", "+380009999562", "updated_any_valid_test_email@yopmail.com", null));
         appmngr.contactHelp.clickUpdateContactBTN();
     }
 }

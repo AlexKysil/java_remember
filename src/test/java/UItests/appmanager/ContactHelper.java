@@ -3,6 +3,7 @@ package UItests.appmanager;
 import dataObjects.newContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class ContactHelper extends BaseHelper {
     public ContactHelper(WebDriver driver) {
@@ -15,6 +16,10 @@ public class ContactHelper extends BaseHelper {
         clearAndInput(By.name("nickname"),newContactData.getNickName());
         clearAndInput(By.name("mobile"),newContactData.getMobile());
         clearAndInput(By.name("email"),newContactData.getEmail());
+
+        if (isElementPresent(By.name("new_group"))) {
+            new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(newContactData.getGroupName());
+        }
     }
 
     public void openCreateNewContact() {
@@ -37,6 +42,6 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void clickUpdateContactBTN() {
-        click(By.name("update"));
+        click(By.cssSelector("[value='Update']"));
     }
 }
