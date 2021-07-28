@@ -31,4 +31,12 @@ public class GroupHelper extends BaseHelper {
     public void selectFirstGroupInList() {
         click(By.name("selected[]"));
     }
+
+    public void clickEditGroupBTN() {
+        click(By.name("edit"));
+    }
+
+    public void clickUpdateGroupBTN() {
+        click(By.name("update"));
+    }
 }
