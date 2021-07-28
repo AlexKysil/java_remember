@@ -13,9 +13,9 @@ public class BaseTest {
 
     @BeforeClass
     public void setupClass() {
-        if (appmngr.browser == BrowserType.CHROME) {
+        if (appmngr.browser.equals(BrowserType.CHROME)) {
             WebDriverManager.chromedriver().setup();
-        } else if (appmngr.browser == BrowserType.FIREFOX) {
+        } else if (appmngr.browser.equals(BrowserType.FIREFOX)) {
             WebDriverManager.firefoxdriver().setup();
         }
 

@@ -20,4 +20,23 @@ public class ContactHelper extends BaseHelper {
     public void openCreateNewContact() {
         click(By.xpath("//a[text()='add new']"));
     }
+    public void selectFirstContactInList() {
+        click(By.name("selected[]"));
+    }
+
+    public void clickDeleteContactBTN(){
+        click(By.cssSelector("[value='Delete']"));
+    }
+
+    public void confirmContactDeletion(){
+        driver.switchTo().alert().accept();
+    }
+
+    public void clickContactEdit() {
+        click(By.cssSelector("[title='Edit']"));
+    }
+
+    public void clickUpdateContactBTN() {
+        click(By.name("update"));
+    }
 }
