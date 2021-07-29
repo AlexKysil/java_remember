@@ -12,7 +12,7 @@ public class BaseHelper {
         this.driver = driver;
     }
 
-    protected void clearAndInput(By locator, String text) {
+    public void clearAndInput(By locator, String text) {
         if (text != null) {
             if (! text.equals(driver.findElement(locator).getAttribute("value"))) {
                 click(locator);
@@ -22,16 +22,20 @@ public class BaseHelper {
         }
     }
 
-    protected void click(By locator) {
+    public void click(By locator) {
         driver.findElement(locator).click();
     }
 
-    protected boolean isElementPresent(By locator) {
+    public boolean isElementPresent(By locator) {
         try {
             driver.findElement(locator);
             return true;
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    public void clickSubmitBtn() {
+        click(By.name("submit"));
     }
 }

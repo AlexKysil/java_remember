@@ -17,7 +17,7 @@ public class ContactHelper extends BaseHelper {
         clearAndInput(By.name("mobile"),newContactData.getMobile());
         clearAndInput(By.name("email"),newContactData.getEmail());
 
-        if (isElementPresent(By.name("new_group"))) {
+        if (isElementPresent(By.name("new_group")) && newContactData.getGroupName() != null) {
             new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(newContactData.getGroupName());
         }
     }
@@ -43,5 +43,11 @@ public class ContactHelper extends BaseHelper {
 
     public void clickUpdateContactBTN() {
         click(By.cssSelector("[value='Update']"));
+    }
+
+    public void createContact(newContactData newContact) {
+        openCreateNewContact();
+        fillInNewContactFields(newContact);
+        clickSubmitBtn();
     }
 }
