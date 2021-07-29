@@ -12,7 +12,7 @@ public class GroupCreate extends BaseTest {
         appmngr.navHelp.openGroupPage();
         appmngr.groupHelp.selectCreateNewGroup();
         appmngr.groupHelp.fillInRequiredNewGroupFields(new newGroupData("any valid group name", "test description 1", "test description second 2"));
-        appmngr.clickSubmitBtn();
+        appmngr.groupHelp.clickSubmitBtn();
     }
 
 }

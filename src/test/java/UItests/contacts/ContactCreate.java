@@ -10,6 +10,6 @@ public class ContactCreate extends BaseTest {
     public void testCreateNewContact() {
         appmngr.getContactHelp().openCreateNewContact();
         appmngr.getContactHelp().fillInNewContactFields(new newContactData("FirstName", "LastName", "NickName", "+380009999561", "any_valid_test_email@yopmail.com", "aloha"));
-        appmngr.clickSubmitBtn();
+        appmngr.contactHelp.clickSubmitBtn();
     }
 }

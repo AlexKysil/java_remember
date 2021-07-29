@@ -43,10 +43,6 @@ public class ApplicationManager {
         }
     }
 
-    public void clickSubmitBtn() {
-        driver.findElement(By.name("submit")).click();
-    }
-
     public ContactHelper getContactHelp() {
         return contactHelp;
     }

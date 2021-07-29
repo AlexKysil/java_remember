@@ -39,4 +39,10 @@ public class GroupHelper extends BaseHelper {
     public void clickUpdateGroupBTN() {
         click(By.name("update"));
     }
+
+    public void createGroup(newGroupData groupData){
+        selectCreateNewGroup();
+        fillInRequiredNewGroupFields(groupData);
+        clickSubmitBtn();
+    }
 }
