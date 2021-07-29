@@ -12,4 +12,8 @@ public class NavigationHelper extends BaseHelper {
     public void openGroupPage() {
         click(By.linkText("groups"));
     }
+
+    public void openHomePage() {
+        click(By.xpath("//a[text()='home']"));
+    }
 }
