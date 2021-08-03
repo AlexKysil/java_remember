@@ -50,4 +50,10 @@ public class GroupHelper extends BaseHelper {
         return driver.findElements(By.name("selected[]")).size();
     }
 
+    public void selectGroupByIndex(int index){
+        if(index >= 0){
+            driver.findElements(By.name("selected[]")).get(index).click();
+        }
+    }
+
 }

@@ -3,6 +3,7 @@ package UItests.groups;
 import UItests.BaseTest;
 import dataObjects.newGroupData;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -22,9 +23,13 @@ public class GroupEdit extends BaseTest {
     @Test
     public void testGroupUpdate(){
         appmngr.navHelp.openGroupPage();
-        appmngr.groupHelp.selectFirstGroupInList();
+        int totalGroups = appmngr.groupHelp.getExistingGroupsCount();
+        appmngr.groupHelp.selectGroupByIndex(totalGroups-1);
         appmngr.groupHelp.clickEditGroupBTN();
         appmngr.groupHelp.fillInRequiredNewGroupFields(updatedGroup);
         appmngr.groupHelp.clickUpdateGroupBTN();
+        appmngr.navHelp.openGroupPage();
+        int totalGroupsAfterChanges = appmngr.groupHelp.getExistingGroupsCount();
+        Assert.assertEquals(totalGroups, totalGroupsAfterChanges);
     }
 }
