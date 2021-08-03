@@ -45,4 +45,9 @@ public class GroupHelper extends BaseHelper {
         fillInRequiredNewGroupFields(groupData);
         clickSubmitBtn();
     }
+
+    public int getExistingGroupsCount(){
+        return driver.findElements(By.name("selected[]")).size();
+    }
+
 }
