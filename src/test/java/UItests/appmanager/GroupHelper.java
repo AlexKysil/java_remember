@@ -3,6 +3,10 @@ package UItests.appmanager;
 import dataObjects.newGroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupHelper extends BaseHelper {
 
@@ -54,6 +58,19 @@ public class GroupHelper extends BaseHelper {
         if(index >= 0){
             driver.findElements(By.name("selected[]")).get(index).click();
         }
+    }
+
+    public List<newGroupData> getGroupNames(){
+        List<newGroupData> groups = new ArrayList<newGroupData>();
+        List<WebElement> elements = driver.findElements(By.name("selected[]"));
+
+        for (WebElement element : elements){
+            String name = element.getText();
+            newGroupData new_group = new newGroupData(name, null, null);
+            groups.add(new_group);
+        }
+
+        return groups;
     }
 
 }

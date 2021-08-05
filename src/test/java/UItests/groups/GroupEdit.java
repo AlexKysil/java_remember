@@ -7,6 +7,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class GroupEdit extends BaseTest {
 
     newGroupData newGroup = new newGroupData("Group2BeModified", null, null);
@@ -24,6 +26,7 @@ public class GroupEdit extends BaseTest {
     public void testGroupUpdate(){
         appmngr.navHelp.openGroupPage();
         int totalGroups = appmngr.groupHelp.getExistingGroupsCount();
+        List<newGroupData> groupsBefore = appmngr.groupHelp.getGroupNames();
         appmngr.groupHelp.selectGroupByIndex(totalGroups-1);
         appmngr.groupHelp.clickEditGroupBTN();
         appmngr.groupHelp.fillInRequiredNewGroupFields(updatedGroup);
@@ -31,5 +34,6 @@ public class GroupEdit extends BaseTest {
         appmngr.navHelp.openGroupPage();
         int totalGroupsAfterChanges = appmngr.groupHelp.getExistingGroupsCount();
         Assert.assertEquals(totalGroups, totalGroupsAfterChanges);
+        List<newGroupData> groupsAfter = appmngr.groupHelp.getGroupNames();
     }
 }
