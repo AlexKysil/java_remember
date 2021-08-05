@@ -62,11 +62,12 @@ public class GroupHelper extends BaseHelper {
 
     public List<newGroupData> getGroupNames(){
         List<newGroupData> groups = new ArrayList<newGroupData>();
-        List<WebElement> elements = driver.findElements(By.name("selected[]"));
+        List<WebElement> elements = driver.findElements(By.cssSelector("span.group"));
 
         for (WebElement element : elements){
             String name = element.getText();
-            newGroupData new_group = new newGroupData(name, null, null);
+            String id = element.getAttribute("value");
+            newGroupData new_group = new newGroupData(id, name, null, null);
             groups.add(new_group);
         }
 

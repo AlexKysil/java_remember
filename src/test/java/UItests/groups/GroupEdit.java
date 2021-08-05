@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class GroupEdit extends BaseTest {
@@ -34,6 +35,13 @@ public class GroupEdit extends BaseTest {
         appmngr.navHelp.openGroupPage();
         int totalGroupsAfterChanges = appmngr.groupHelp.getExistingGroupsCount();
         Assert.assertEquals(totalGroups, totalGroupsAfterChanges);
+
+        updatedGroup.setId(groupsBefore.get(totalGroups -1).getId());
+        groupsBefore.remove(totalGroups-1);
+        groupsBefore.add(updatedGroup);
+
         List<newGroupData> groupsAfter = appmngr.groupHelp.getGroupNames();
+
+        Assert.assertEquals(new HashSet<Object>(groupsBefore), new HashSet<Object>(groupsAfter));
     }
 }
