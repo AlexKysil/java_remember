@@ -6,20 +6,20 @@ public class newGroupData {
     private  String groupName;
     private  String groupDescription1;
     private  String groupDescription2;
-    private  String id;
+    private  int id;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     public newGroupData(String groupName, String groupDescription1, String groupDescription2) {
-        this.id = null;
+        this.id = 0;
         this.groupName = groupName;
         this.groupDescription1 = groupDescription1;
         this.groupDescription2 = groupDescription2;
     }
 
-    public newGroupData(String id, String groupName, String groupDescription1, String groupDescription2) {
+    public newGroupData(int id, String groupName, String groupDescription1, String groupDescription2) {
         this.id = id;
         this.groupName = groupName;
         this.groupDescription1 = groupDescription1;
@@ -54,7 +54,7 @@ public class newGroupData {
         return groupName.equals(that.groupName);
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
