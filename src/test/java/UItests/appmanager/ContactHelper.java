@@ -45,6 +45,10 @@ public class ContactHelper extends BaseHelper {
         click(By.cssSelector("[title='Edit']"));
     }
 
+    public void clickContactEdit(int id) {
+        driver.findElement(By.xpath(String.format("//tr//input[@id='%d']/../..//*[@title='Edit']", id))).click();
+    }
+
     public void clickUpdateContactBTN() {
         click(By.cssSelector("[value='Update']"));
     }

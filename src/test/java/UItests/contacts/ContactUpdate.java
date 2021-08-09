@@ -3,8 +3,12 @@ package UItests.contacts;
 import UItests.BaseTest;
 import dataObjects.newContactData;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import java.util.Comparator;
+import java.util.List;
 
 public class ContactUpdate extends BaseTest {
 
@@ -21,10 +25,25 @@ public class ContactUpdate extends BaseTest {
     }
 
     @Test
-    public void testContactDeletion() {
+    public void testContactEdition() {
         appmngr.navHelp.openHomePage();
-        appmngr.contactHelp.clickContactEdit();
+        List<newContactData> contactsBefore = appmngr.contactHelp.getCurrentContactsList();
+        newContactData object2Delete = contactsBefore.get(contactsBefore.size() -1);
+
+        appmngr.contactHelp.clickContactEdit(object2Delete.getId());
         appmngr.getContactHelp().fillInNewContactFields(contactUpdate);
         appmngr.contactHelp.clickUpdateContactBTN();
+
+        appmngr.navHelp.openHomePage();
+        List<newContactData> contactsAfter = appmngr.contactHelp.getCurrentContactsList();
+
+        contactsBefore.remove(object2Delete);
+        contactsBefore.add(new newContactData(contactUpdate.getFirstName(), contactUpdate.getLastName(), object2Delete.getId()));
+
+        Comparator<? super newContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+        contactsBefore.sort(byId);
+        contactsAfter.sort(byId);
+
+        Assert.assertEquals(contactsBefore, contactsAfter);
     }
 }
