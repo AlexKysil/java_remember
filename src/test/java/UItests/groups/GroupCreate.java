@@ -22,14 +22,16 @@ public class GroupCreate extends BaseTest {
         appmngr.navHelp.openGroupPage();
         Assert.assertEquals(appmngr.groupHelp.getExistingGroupsCount(), totalGroups + 1);
 
-        int max = 0;
-        for (newGroupData i : groupsBefore){
-            if (i.getId() > max){
-                max = i.getId();
-            }
-        }
-        max++;
-        newGroup.setId(max);
+//        int max = 0;
+//        for (newGroupData i : groupsBefore){
+//            if (i.getId() > max){
+//                max = i.getId();
+//            }
+//        }
+//        max++;
+        int max2 = groupsBefore.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
+        max2++;
+        newGroup.setId(max2);
         groupsBefore.add(newGroup);
 
         List<newGroupData> groupsAfter = appmngr.groupHelp.getGroupNames();
