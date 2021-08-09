@@ -4,7 +4,7 @@ import UItests.BaseTest;
 import dataObjects.newContactData;
 import dataObjects.newGroupData;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class ContactCreate extends BaseTest {
     newContactData contact2Create = new newContactData("FirstName", "LastName", "NickName", "+380009999561", "any_valid_test_email@yopmail.com", "aloha");
     String expectedGroupName = "aloha";
 
-    @BeforeTest
+    @BeforeMethod
     public void preconditions(){
         appmngr.navHelp.openGroupPage();
         List<newGroupData> currentGroups = appmngr.groupHelp.getGroupNames();

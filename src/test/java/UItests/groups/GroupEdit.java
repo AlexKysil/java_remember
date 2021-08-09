@@ -4,11 +4,10 @@ import UItests.BaseTest;
 import dataObjects.newGroupData;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class GroupEdit extends BaseTest {
@@ -16,7 +15,7 @@ public class GroupEdit extends BaseTest {
     newGroupData newGroup = new newGroupData("Group2BeModified", null, null);
     newGroupData updatedGroup = new newGroupData("updatedGroup", "updated description", "updatedDescription 2");
 
-    @BeforeTest
+    @BeforeMethod
     public void preconditions(){
         appmngr.navHelp.openGroupPage();
         if (! appmngr.groupHelp.isElementPresent(By.name("selected[]"))) {
