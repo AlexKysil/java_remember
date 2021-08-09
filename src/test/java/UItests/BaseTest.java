@@ -11,16 +11,6 @@ public class BaseTest {
 
     public final ApplicationManager appmngr = new ApplicationManager(BrowserType.CHROME);
 
-    @BeforeClass
-    public void setupClass() {
-        if (appmngr.browser.equals(BrowserType.CHROME)) {
-            WebDriverManager.chromedriver().setup();
-        } else if (appmngr.browser.equals(BrowserType.FIREFOX)) {
-            WebDriverManager.firefoxdriver().setup();
-        }
-
-    }
-
     @BeforeTest
     public void setUp() {
         appmngr.init();

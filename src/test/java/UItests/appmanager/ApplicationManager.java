@@ -1,6 +1,6 @@
 package UItests.appmanager;
 
-import org.openqa.selenium.By;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,6 +20,13 @@ public class ApplicationManager {
     }
 
     public void init() {
+
+        if (browser.equals(BrowserType.CHROME)) {
+            WebDriverManager.chromedriver().setup();
+        } else if (browser.equals(BrowserType.FIREFOX)) {
+            WebDriverManager.firefoxdriver().setup();
+        }
+
         if (browser.equals(BrowserType.CHROME)) {
             driver = new ChromeDriver();
         } else if (browser.equals(BrowserType.FIREFOX)) {
