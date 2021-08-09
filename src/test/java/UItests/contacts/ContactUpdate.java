@@ -4,7 +4,7 @@ import UItests.BaseTest;
 import dataObjects.newContactData;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Comparator;
@@ -15,7 +15,7 @@ public class ContactUpdate extends BaseTest {
     newContactData newContact = new newContactData("Contact2BeUpdated", null, null, null, null, null);
     newContactData contactUpdate = new newContactData("UpdatedFirstName", "UpdatedLastName", "UpdatedNickName", "+380009999562", "updated_any_valid_test_email@yopmail.com", null);
 
-    @BeforeTest
+    @BeforeMethod
     public void preconditions(){
         appmngr.navHelp.openHomePage();
         if (! appmngr.contactHelp.isElementPresent(By.name("selected[]"))) {

@@ -4,7 +4,7 @@ import UItests.BaseTest;
 import dataObjects.newGroupData;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class GroupDelete extends BaseTest {
 
   newGroupData newGroup = new newGroupData("Group2BeDeleted", null, null);
 
-  @BeforeTest
+  @BeforeMethod
   public void preconditions(){
     appmngr.navHelp.openGroupPage();
     if (! appmngr.groupHelp.isElementPresent(By.name("selected[]"))) {

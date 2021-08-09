@@ -4,7 +4,7 @@ import UItests.BaseTest;
 import dataObjects.newContactData;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Comparator;
@@ -14,7 +14,7 @@ public class ContactDelete extends BaseTest {
 
       newContactData newContact = new newContactData("Contact2BeDeleted", null, null, null, null, null);
 
-    @BeforeTest
+    @BeforeMethod
     public void preconditions(){
         appmngr.navHelp.openHomePage();
         if (! appmngr.contactHelp.isElementPresent(By.name("selected[]"))) {
