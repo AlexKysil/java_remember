@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -42,6 +43,12 @@ public class GroupEdit extends BaseTest {
 
         List<newGroupData> groupsAfter = appmngr.groupHelp.getGroupNames();
 
-        Assert.assertEquals(new HashSet<Object>(groupsBefore), new HashSet<Object>(groupsAfter));
+//        Assert.assertEquals(new HashSet<Object>(groupsBefore), new HashSet<Object>(groupsAfter));
+
+        Comparator<? super newGroupData> byID = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+        groupsBefore.sort(byID);
+        groupsAfter.sort(byID);
+
+        Assert.assertEquals(groupsBefore, groupsAfter);
     }
 }
