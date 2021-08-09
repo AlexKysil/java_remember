@@ -3,7 +3,11 @@ package UItests.appmanager;
 import dataObjects.newContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends BaseHelper {
     public ContactHelper(WebDriver driver) {
@@ -41,6 +45,10 @@ public class ContactHelper extends BaseHelper {
         click(By.cssSelector("[title='Edit']"));
     }
 
+    public void clickContactEdit(int id) {
+        driver.findElement(By.xpath(String.format("//tr//input[@id='%d']/../..//*[@title='Edit']", id))).click();
+    }
+
     public void clickUpdateContactBTN() {
         click(By.cssSelector("[value='Update']"));
     }
@@ -50,4 +58,18 @@ public class ContactHelper extends BaseHelper {
         fillInNewContactFields(newContact);
         clickSubmitBtn();
     }
+
+    public List<newContactData> getCurrentContactsList() {
+        List<WebElement> elements = driver.findElements(By.xpath("//tr[@name='entry']"));
+        List<newContactData> contacts = new ArrayList<newContactData>();
+        for (WebElement element : elements){
+            String Lastname = element.findElement(By.xpath("td[2]")).getText();
+            String FirstName = element.findElement(By.xpath("td[3]")).getText();
+            int id = Integer.parseInt(element.findElement(By.name("selected[]")).getAttribute("id"));
+            newContactData contact = new newContactData(FirstName, Lastname, id);
+            contacts.add(contact);
+        }
+        return contacts;
+    }
+
 }
